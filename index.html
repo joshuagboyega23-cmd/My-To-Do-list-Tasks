@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>My Tasks</title>
+</head>
+<body>
+  
+    <section class="tasks-section">
+        <div class="task-header">
+            <h2>My Tasks</h2>
+
+            <div class="task-filter">
+                <h1 class="active">All</h1>
+                <h1>Today</h1>
+                <h1>Upcoming</h1>
+                <h1>Completed</h1>
+            </div>
+        </div>
+
+        <div class="task-container">
+            <div class="task-row completed">
+                <input type="checkbox" checked>
+                <p class="task-name">Design the landing page</p>
+                <button class="button web">Work</button>
+
+                <div class="task-date">
+                    <i class="fa-regular fa calendar"></i>
+                    <span>June 10, 2026</span>
+                </div>
+
+               <button class="btn high">High</button>
+
+               <i class="fa-solid fa-ellipsis"></i>
+               </div>
+
+                <div class="task-row">
+                    <input type="checkbox">
+
+                    <p class="task-name">Buy groceries for the week</p>
+                    <button class="button personal">Personal</button>
+
+                    <div class="task-date">
+                    <i class="fa-regular fa calendar"></i>
+                    <span>June 10, 2026</span>
+                </div>
+
+                <button class="btn medium">High</button>
+                <i class="fa-solid fa-ellipsis"></i>
+                </div>
+    
+            <div class="task-row">
+                    <input type="checkbox">
+
+                    <p class="task-name">Buy groceries for the week</p>
+                    <button class="button web">Personal</button>
+
+                    <div class="task-date">
+                    <i class="fa-regular fa calendar"></i>
+                    <span>June 10, 2026</span>
+                    </div>
+            
+                <button class="btn medium">High</button>
+                <i class="fa-solid fa-ellipsis"></i>  
+            </div>
+
+                <div class="task-row">
+                    <input type="checkbox">
+
+                    <p class="task-name">Buy groceries for the week</p>
+                    <button class="button web">Personal</button>
+
+                    <div class="task-date">
+                    <i class="fa-regular fa calendar"></i>
+                    <span>June 10, 2026</span>
+                    </div>
+
+                <button class="btn medium">High</button>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+                        <div class="row">
+                <input type="text" id="input-box" placeholder="Add your text">
+                <button onclick="addTask()">Add New Task</button>
+            </div>
+
+        </div>
+    </section>
+
+        
+        
+
+    
+<script src="script.js"></script>
+</body>
+</html>
