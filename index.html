@@ -21,8 +21,9 @@
             </div>
         </div>
 
-        <div class="task-container">
-            <div class="task-row completed">
+        <div class="task-container" id="list-container">
+            <div class="task-row completed"></div>
+             <div class="task-row completed">
                 <input type="checkbox" checked>
                 <p class="task-name">Design the landing page</p>
                 <button class="button web">Work</button>
@@ -80,17 +81,13 @@
 
                 <button class="btn medium">High</button>
                 <i class="fa-solid fa-ellipsis"></i>
-            </div>
-                        <div class="row">
+            </div> 
+        
+            <div class="row">
                 <input type="text" id="input-box" placeholder="Add your text">
-                <button onclick="addTask()">Add New Task</button>
+                <button onclick="addTask()" class="add-btn">Add New Task</button>
             </div>
-
-        </div>
     </section>
-
-        
-        
 
     
 <script src="script.js"></script>
