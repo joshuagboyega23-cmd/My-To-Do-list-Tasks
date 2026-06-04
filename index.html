@@ -8,88 +8,45 @@
     <title>My Tasks</title>
 </head>
 <body>
-  
     <section class="tasks-section">
         <div class="task-header">
-            <h2>My Tasks</h2>
-
-            <div class="task-filter">
-                <h1 class="active">All</h1>
-                <h1>Today</h1>
-                <h1>Upcoming</h1>
-                <h1>Completed</h1>
+            <div>
+                <h2>My Tasks</h2>
+                <p class="subtitle">Add tasks and see what happens.</p>
             </div>
         </div>
 
-        <div class="task-container" id="list-container">
-            <div class="task-row completed"></div>
-             <div class="task-row completed">
-                <input type="checkbox" checked>
-                <p class="task-name">Design the landing page</p>
-                <button class="button web">Work</button>
-
-                <div class="task-date">
-                    <i class="fa-regular fa calendar"></i>
-                    <span>June 10, 2026</span>
-                </div>
-
-               <button class="btn high">High</button>
-
-               <i class="fa-solid fa-ellipsis"></i>
-               </div>
-
-                <div class="task-row">
-                    <input type="checkbox">
-
-                    <p class="task-name">Buy groceries for the week</p>
-                    <button class="button personal">Personal</button>
-
-                    <div class="task-date">
-                    <i class="fa-regular fa calendar"></i>
-                    <span>June 10, 2026</span>
-                </div>
-
-                <button class="btn medium">High</button>
-                <i class="fa-solid fa-ellipsis"></i>
-                </div>
-    
-            <div class="task-row">
-                    <input type="checkbox">
-
-                    <p class="task-name">Buy groceries for the week</p>
-                    <button class="button web">Personal</button>
-
-                    <div class="task-date">
-                    <i class="fa-regular fa calendar"></i>
-                    <span>June 10, 2026</span>
-                    </div>
-            
-                <button class="btn medium">High</button>
-                <i class="fa-solid fa-ellipsis"></i>  
+        <form id="task-form" class="task-form">
+            <div class="input-group">
+                <label for="task-name">Task</label>
+                <input type="text" id="task-name" placeholder="Input your task" required>
             </div>
-
-                <div class="task-row">
-                    <input type="checkbox">
-
-                    <p class="task-name">Buy groceries for the week</p>
-                    <button class="button web">Personal</button>
-
-                    <div class="task-date">
-                    <i class="fa-regular fa calendar"></i>
-                    <span>June 10, 2026</span>
-                    </div>
-
-                <button class="btn medium">High</button>
-                <i class="fa-solid fa-ellipsis"></i>
-            </div> 
-        
-            <div class="row">
-                <input type="text" id="input-box" placeholder="Add your text">
-                <button onclick="addTask()" class="add-btn">Add New Task</button>
+            <div class="input-group">
+                <label for="task-category">Category</label>
+                <select id="task-category" required>
+                    <option value="Work">Work</option>
+                    <option value="Web Project">Web Project</option>
+                    <option value="Personal">Personal</option>
+                </select>
             </div>
+            <div class="input-group">
+                <label for="task-date">Due date</label>
+                <input type="date" id="task-date" required>
+            </div>
+            <div class="input-group">
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" required>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <button type="submit" class="add-btn">Add New Task</button>
+        </form>
+
+        <div class="task-container" id="list-container"></div>
     </section>
 
-    
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 

@@ -1,50 +1,87 @@
-const inputBox = document.getElementById("input-box");
+const taskForm = document.getElementById("task-form");
 const listContainer = document.getElementById("list-container");
 
-function addTask() {
-    console.log("Button clicked")
-    if(inputBox.value === ''){
-        alert("You must write something");
+let tasks = [];
+
+// Load tasks from localStorage
+function loadTasks() {
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    listContainer.innerHTML = ""; 
+    
+    tasks.forEach((task, index) => {
+        createTaskElement(task, index);
+    });
+}
+
+// Create task 
+function createTaskElement(task, index) {
+    const taskItem = document.createElement("div");
+    taskItem.classList.add("task-row");
+
+    //   category class
+    let categoryClass = task.category.toLowerCase();
+    if (categoryClass === "web project") {
+        categoryClass = "webproject";
+    }
+
+    taskItem.innerHTML = `
+        <span class="task-name">${task.name}</span>
+        
+        <button class="button ${categoryClass}">
+            ${task.category}
+        </button>
+        
+        <div class="task-date">
+            <i class="fa-regular fa-calendar"></i>
+            <span>${task.date}</span>
+        </div>
+        
+        <button class="btn ${task.priority.toLowerCase()}">
+            ${task.priority}
+        </button>
+        
+        <i class="fa-solid fa-ellipsis delete-btn"></i>
+    `;
+
+    // Delete 
+    taskItem.querySelector('.delete-btn').addEventListener('click', () => {
+        if (confirm("Delete this task?")) {
+            tasks.splice(index, 1);
+            saveTasks();
+            loadTasks(); 
+        }
+    });
+
+    listContainer.appendChild(taskItem);
+}
+
+// Save to localStorage
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Add new task
+taskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const newTask = {
+        name: document.getElementById("task-name").value.trim(),
+        category: document.getElementById("task-category").value,
+        date: document.getElementById("task-date").value,
+        priority: document.getElementById("task-priority").value
+    };
+
+    if (!newTask.name) {
+        alert("Please enter a task name!");
         return;
     }
 
-let taskRow = document.createElement("div");
-taskRow.className = "task-row";
+    tasks.unshift(newTask); 
+    saveTasks();
+    loadTasks(); 
 
-taskRow.innerHTMl = `
-<input type="checkbox">
-<p class="task-name">${inputBox.value}</p>
-<button class="button personal">Personal</button>
-
-<div class="task-date">
-<i class="fa-reguklar fa-calendar"></i>
-<span>June 10, 2026<?span>
-</div>
-
-<button class="btn medium">Medium</button>
-<i class="fa-solid fa-ellipsis"></i>
-`;
-
-listContainer.appendChild(taskRow);
-inputBox.value = "";
-saveData();
-}
-
-console.log(listContainer);
-listContainer.appendChild(newTask)
-
-listContainer.addEventListener("click", function(e){
-    if (e.target.tagName === "INPUT" && e.target.type === "checkbox"){
-        e.target.parentElement.classList.toggle("completed");
-        saveData();
-    }
-    else if (e.target.tagName === "I" && e.target.classList.contains("fa-ellipsis")){
-        e.target.parentElement.remove();
-        saveData();
-    }
+    taskForm.reset();
 });
 
-function saveData(){
-    localStorage.setItem("tasks", listContainer.innerHTMl);
-}
-
+//  when my page loads
+document.addEventListener("DOMContentLoaded", loadTasks);
